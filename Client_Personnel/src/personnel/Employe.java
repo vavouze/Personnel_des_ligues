@@ -25,7 +25,7 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.ligue = ligue;
 	}
 	
-	/**
+	/** 
 	 * Retourne vrai ssi l'employé est administrateur de la ligue 
 	 * passée en paramètre.
 	 * @return vrai ssi l'employé est administrateur de la ligue 
