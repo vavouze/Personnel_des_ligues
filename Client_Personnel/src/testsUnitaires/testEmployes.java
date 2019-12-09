@@ -72,6 +72,20 @@ public class testEmployes {
 	}
 	
 	
+	@Test
+	void testToString() 
+	{
+		
+		Ligue ligue = new Ligue("Flechettes");
+		Employe root = GestionPersonnel.getGestionPersonnel().getRoot();
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "");
+		
+		assertEquals("Bouchard Gérard g.bouchard@gmail.com (Flechettes)",employe.toString());
+		assertEquals(root.getNom()+" "+ root.getPrenom()+" "+root.getMail()+" (super-utilisateur)",root.toString());
+		
+	}
+	
+	
 	
 
 	
