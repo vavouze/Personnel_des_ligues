@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import personnel.DroitsInsuffisants;
 import personnel.Employe;
 import personnel.GestionPersonnel;
+import personnel.ImpossibleDeSupprimerRoot;
 import personnel.Ligue;
 
 
@@ -69,6 +70,51 @@ public class testEmployes {
 		assertTrue(employe.checkPassword("azerty"));
 		assertFalse(employe.checkPassword("tete"));
 		
+	}
+	
+	
+	@Test
+	void testToString() 
+	{
+		
+		Ligue ligue = new Ligue("Flechettes");
+		Employe root = GestionPersonnel.getGestionPersonnel().getRoot();
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "");
+		
+		assertEquals("Bouchard Gérard g.bouchard@gmail.com (Flechettes)",employe.toString());
+		assertEquals(root.getNom()+" "+ root.getPrenom()+" "+root.getMail()+" (super-utilisateur)",root.toString());
+		
+	}
+	
+	
+	@Test
+	void testRemove() 
+	{	
+		Ligue ligue = new Ligue("Flechettes");
+		Employe employe = new Employe(ligue,"Bouchard", "Gérard", "g.bouchard@gmail.com", "");
+		
+		
+		employe.remove();
+		assertFalse(ligue.getEmployes().contains(employe));
+		
+		
+		
+		Employe root = GestionPersonnel.getGestionPersonnel().getRoot();
+		Employe admin = new Employe(ligue,"Bouchard", "test", "g.bouchard@gmail.com", "yex");
+		
+		ligue.setAdministrateur(admin);
+		admin.remove();
+		assertFalse(ligue.getEmployes().contains(admin));
+		
+		
+		assertEquals(root, ligue.getAdministrateur());
+		assertThrows(ImpossibleDeSupprimerRoot.class,() -> root.remove());
+		
+		
+		
+		
+		 
+					
 	}
 	
 	

@@ -66,6 +66,7 @@ class testLigue
     {
 		Ligue ligue = new Ligue("test");
         ligue.remove();
+        assertFalse(GestionPersonnel.getGestionPersonnel().getLigues().contains(ligue));
         
     }
 	
