@@ -16,7 +16,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	private String nom, prenom, password, mail;
 	private Ligue ligue;
 	
-	Employe(Ligue ligue, String nom, String prenom, String mail, String password)
+	public Employe(Ligue ligue, String nom, String prenom, String mail, String password)
 	{
 		this.nom = nom;
 		this.prenom = prenom;
@@ -164,7 +164,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	public int compareTo(Employe autre)
 	{
 		int cmp = getNom().compareTo(autre.getNom());
-		if (cmp != 0)
+		if (cmp != 0)	
 			return cmp;
 		return getPrenom().compareTo(autre.getPrenom());
 	}
