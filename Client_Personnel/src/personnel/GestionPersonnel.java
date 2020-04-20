@@ -80,6 +80,20 @@ public class GestionPersonnel implements Serializable
 		ligues.add(ligue);
 	}
 	
+	public Ligue addLigue(String nom) throws SauvegardeImpossible
+	{
+		Ligue ligue = new Ligue(nom); 
+		ligues.add(ligue);
+		return ligue;
+	}
+	
+	public Ligue addLigue(int id, String nom)
+	{
+		Ligue ligue = new Ligue(this, id, nom);
+		ligues.add(ligue);
+		return ligue;
+	}
+	
 
 	void remove(Ligue ligue)
 	{

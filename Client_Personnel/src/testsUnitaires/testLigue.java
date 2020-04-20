@@ -37,7 +37,7 @@ class testLigue
 	void getAdministrateur() 
 	{	
 		Ligue ligue = new Ligue("test");
-		Employe employe = new Employe(ligue,"Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty");
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty");
 		ligue.setAdministrateur(employe);
 		assertEquals(employe, ligue.getAdministrateur());
 	}

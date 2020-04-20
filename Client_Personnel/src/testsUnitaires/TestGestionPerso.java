@@ -20,12 +20,12 @@ public class TestGestionPerso {
 	{	
 		Ligue ligue = new Ligue("Flechettes");
 		
-		Employe administrateur = new Employe(ligue,"Bouchard", "Gérard", "g.bouchard@gmail.com", "");
+		Employe administrateur = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "");
 		ligue.setAdministrateur(administrateur);
 		
 		assertEquals(ligue,GestionPersonnel.getGestionPersonnel().getLigue(administrateur));	
 		
-		Employe pasadmin = new Employe(ligue,"Bouchard", "Gérard", "g.bouchard@gmail.com", "");
+		Employe pasadmin = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "");
 		
 		assertNull(GestionPersonnel.getGestionPersonnel().getLigue(pasadmin));
 		

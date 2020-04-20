@@ -7,36 +7,24 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import personnel.GestionPersonnel;
+import personnel.Ligue;
 import personnel.SauvegardeImpossible;
 
 public class Serialization implements personnel.Passerelle
 {
 	private static final String FILE_NAME = "GestionPersonnel.srz";
-	GestionPersonnel gestionPersonnel;
-		
+
 	@Override
 	public GestionPersonnel getGestionPersonnel()
 	{
-		ObjectInputStream ois = null;
-		try
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME)))
 		{
-			FileInputStream fis = new FileInputStream(FILE_NAME);
-			ois = new ObjectInputStream(fis);
-			return (GestionPersonnel)(ois.readObject());
+			return (GestionPersonnel) ois.readObject();
 		}
 		catch (IOException | ClassNotFoundException e)
 		{
 			return null;
 		}
-		finally
-		{
-				try
-				{
-					if (ois != null)
-						ois.close();
-				} 
-				catch (IOException e){}
-		}	
 	}
 	
 	/**
@@ -44,29 +32,22 @@ public class Serialization implements personnel.Passerelle
 	 * lors d'une exécution ultérieure du programme.
 	 * @throws SauvegardeImpossible Si le support de sauvegarde est inaccessible.
 	 */
-	
 	@Override
 	public void sauvegarderGestionPersonnel(GestionPersonnel gestionPersonnel) throws SauvegardeImpossible
 	{
-		ObjectOutputStream oos = null;
-		try
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME)))
 		{
-			FileOutputStream fis = new FileOutputStream(FILE_NAME);
-			oos = new ObjectOutputStream(fis);
-			oos.writeObject(this);
+			oos.writeObject(gestionPersonnel);
 		}
 		catch (IOException e)
 		{
-			throw new SauvegardeImpossible();
+			throw new SauvegardeImpossible(e);
 		}
-		finally
-		{
-			try
-			{
-				if (oos != null)
-					oos.close();
-			} 
-			catch (IOException e){}
-		}
+	}
+	
+	@Override
+	public int insert(Ligue ligue) throws SauvegardeImpossible
+	{
+		return -1;
 	}
 }

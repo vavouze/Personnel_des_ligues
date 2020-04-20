@@ -40,7 +40,7 @@ public class testEmployes {
 	void testgetNom() 
 	{
 		Ligue ligue = new Ligue("Fléchettes");
-		Employe employe = new Employe(ligue,"Bouchard", "Gerard", "g.bouchard@gmail.com", "azerty");
+		Employe employe = ligue.addEmploye("Bouchard", "Gerard", "g.bouchard@gmail.com", "azerty");
 		assertEquals("Bouchard", employe.getNom());
 		assertEquals("Gerard", employe.getPrenom());
 		assertEquals("g.bouchard@gmail.com", employe.getMail());
@@ -51,7 +51,7 @@ public class testEmployes {
 	void testsetNom() 
 	{	
 		Ligue ligue = new Ligue("Fléchettes");
-		Employe employe = new Employe(ligue,"", "", "", "azerty");
+		Employe employe = ligue.addEmploye("", "", "", "azerty");
 		employe.setNom("toinou");
 		employe.setPrenom("james");
 		employe.setMail("james@gmail.com");
@@ -91,7 +91,7 @@ public class testEmployes {
 	void testRemove() 
 	{	
 		Ligue ligue = new Ligue("Flechettes");
-		Employe employe = new Employe(ligue,"Bouchard", "Gérard", "g.bouchard@gmail.com", "");
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "");
 		
 		
 		employe.remove();
@@ -100,7 +100,7 @@ public class testEmployes {
 		
 		
 		Employe root = GestionPersonnel.getGestionPersonnel().getRoot();
-		Employe admin = new Employe(ligue,"Bouchard", "test", "g.bouchard@gmail.com", "yex");
+		Employe admin = ligue.addEmploye("Bouchard", "test", "g.bouchard@gmail.com", "yex");
 		
 		ligue.setAdministrateur(admin);
 		admin.remove();

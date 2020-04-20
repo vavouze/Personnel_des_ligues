@@ -10,7 +10,7 @@ public class PersonnelConsole
 	LigueConsole ligueConsole;
 	EmployeConsole employeConsole;
 	
-	public PersonnelConsole(GestionPersonnel gestionPersonnel)
+	public PersonnelConsole(GestionPersonnel gestionPersonnel) 
 	{
 		this.gestionPersonnel = gestionPersonnel;
 		this.employeConsole = new EmployeConsole();
