@@ -15,9 +15,11 @@ public class Employe implements Serializable, Comparable<Employe>
 	private static final long serialVersionUID = 4795721718037994734L;
 	private String nom, prenom, password, mail;
 	private Ligue ligue;
+	private GestionPersonnel gestionPersonnel;
 	
-	 Employe(Ligue ligue, String nom, String prenom, String mail, String password)
+	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password)
 	{
+		this.gestionPersonnel = gestionPersonnel;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.password = password;
@@ -25,7 +27,7 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.ligue = ligue;
 	}
 	
-	/** 
+	/**
 	 * Retourne vrai ssi l'employé est administrateur de la ligue 
 	 * passée en paramètre.
 	 * @return vrai ssi l'employé est administrateur de la ligue 
@@ -164,7 +166,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	public int compareTo(Employe autre)
 	{
 		int cmp = getNom().compareTo(autre.getNom());
-		if (cmp != 0)	
+		if (cmp != 0)
 			return cmp;
 		return getPrenom().compareTo(autre.getPrenom());
 	}
