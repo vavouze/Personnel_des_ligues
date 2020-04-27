@@ -10,43 +10,29 @@ import java.sql.Statement;
 import personnel.*;
 
 
+
+
 public class JDBC implements Passerelle 
 {
 	Connection connection;
 	
-/**	
- * public static void main(String[] args) {
- * @param ligue
- * @return
- * @throws SauvegardeImpossible
-  *
- *		Connection cnx = ConnecterDB();
- *	}
- */
+
 	
-	public static Connection ConnecterDB()
+	public JDBC()
 	{
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			String url="jdbc:mysql://localhost:3306/personnelligues";
-			String user= "root";
-			String password="";
-			Connection cnx= DriverManager.getConnection(url,user,password);
-			System.out.println("Connection établie.");
-			return cnx;
+			Class.forName(CredentialsExample.getDriverClassName());
+			connection = DriverManager.getConnection(CredentialsExample.getUrl(), CredentialsExample.getUser(), CredentialsExample.getPassword());
 		}
 		catch (ClassNotFoundException e)
 		{
 			System.out.println("Pilote JDBC non installé.");
-			return null;
 		}
 		catch (SQLException e)
 		{
 			System.out.println(e);
-			return null;
 		}
-		
 	}
 	
 	
