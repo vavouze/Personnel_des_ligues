@@ -102,6 +102,8 @@ public class GestionPersonnel implements Serializable
 	{
 		return passerelle.insert(ligue);
 	}
+	
+	
 
 	/**
 	 * Retourne le root (super-utilisateur).

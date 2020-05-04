@@ -17,6 +17,8 @@ public class Employe implements Serializable, Comparable<Employe>
 	private Ligue ligue;
 	private GestionPersonnel gestionPersonnel;
 	
+	
+	
 	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password)
 	{
 		this.gestionPersonnel = gestionPersonnel;
@@ -25,6 +27,7 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.password = password;
 		this.mail = mail;
 		this.ligue = ligue;
+		
 	}
 	
 	/**
@@ -143,6 +146,8 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		return ligue;
 	}
+	
+	
 
 	/**
 	 * Supprime l'employé. Si celui-ci est un administrateur, le root

@@ -130,6 +130,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 		GestionPersonnel.getGestionPersonnel().remove(this);
 	}
 	
+	
 
 	@Override
 	public int compareTo(Ligue autre)

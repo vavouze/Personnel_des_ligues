@@ -94,4 +94,8 @@ public class JDBC implements Passerelle
 			throw new SauvegardeImpossible(exception);
 		}		
 	}
+	
+	
+	
+	
 }
